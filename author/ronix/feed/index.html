@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Dormestmass Blog &#187; ronix</title>
+	<atom:link href="http://oldie.ronix.net.ua/author/ronix/feed" rel="self" type="application/rss+xml" />
+	<link>http://oldie.ronix.net.ua</link>
+	<description>Админ — это состояние души</description>
+	<lastBuildDate>Thu, 14 May 2015 09:03:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=4.3</generator>
+	<item>
+		<title>Как включить автодополнение команд в git</title>
+		<link>http://oldie.ronix.net.ua/2012/12/kak-vklyuchit-avtodopolnenie-komand-v-git.html</link>
+		<comments>http://oldie.ronix.net.ua/2012/12/kak-vklyuchit-avtodopolnenie-komand-v-git.html#comments</comments>
+		<pubDate>Mon, 10 Dec 2012 05:18:37 +0000</pubDate>
+		<dc:creator><![CDATA[ronix]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">http://blog.ronix.net.ua/?p=422</guid>
+		<description><![CDATA[Для включения автодополнения команд, нам понадобятся исходники git. Самый простой способ это сделать — клонировать репозиторий. rshramko@rawstation:~/src$ git clone https://github.com/git/git Cloning into 'git'... remote: Counting objects: 144635, done. remote: Compressing objects: 100% (48001/48001), done. remote: Total 144635 (delta 105598), reused 131816 (delta 94710) Receiving objects: 100% (144635/144635), 33.51 MiB &#124; 1.16 MiB/s, done. Resolving deltas: 100% &#8230; <a href="http://oldie.ronix.net.ua/2012/12/kak-vklyuchit-avtodopolnenie-komand-v-git.html" class="more-link">Continue reading <span class="screen-reader-text">Как включить автодополнение команд в git</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Для включения автодополнения команд, нам понадобятся исходники git. Самый простой способ это сделать — клонировать репозиторий.</p>
+<pre>rshramko@rawstation:~/src$ git clone https://github.com/git/git
+Cloning into 'git'...
+remote: Counting objects: 144635, done.
+remote: Compressing objects: 100% (48001/48001), done.
+remote: Total 144635 (delta 105598), reused 131816 (delta 94710)
+Receiving objects: 100% (144635/144635), 33.51 MiB | 1.16 MiB/s, done.
+Resolving deltas: 100% (105598/105598), done.</pre>
+<p>Нужные нам скрипты лежат в git/contrib/completion/:</p>
+<pre>rshramko@rawstation:~/src$ cd git/contrib/completion/
+rshramko@rawstation:~/src/git/contrib/completion$ ls -l
+итого 72
+-rw-rw-r-- 1 rshramko rshramko 49578 Дек 10 07:16 git-completion.bash
+-rw-rw-r-- 1 rshramko rshramko  2428 Дек 10 07:16 git-completion.tcsh
+-rw-rw-r-- 1 rshramko rshramko  1395 Дек 10 07:16 git-completion.zsh
+-rw-rw-r-- 1 rshramko rshramko 10588 Дек 10 07:16 git-prompt.sh</pre>
+<p>Предположим, мы настраиваем автодополнение для bash. В зависимости от глобальности настроек, либо копируем скрипт git-completion.bash в /etc/bash_completion.d/, либо в $HOME/.git-completion.bash.</p>
+<p>В последнем случае, подключаем его через .bashrc:</p>
+<pre>source $HOME/.git-completion.bash</pre>
+<p>В результате, при работе с репозиториями git, имеем чудную подсказку, появляющуюся по двум Tab-ам:</p>
+<pre>rshramko@rawstation:~/src/git$ git log --pretty=<em><strong>&lt;Tab&gt;&lt;Tab&gt;</strong></em>
+email     format:   full      fuller    medium    oneline   raw       short     
+rshramko@rawstation:~/src/git$ git log --pretty=</pre>
+]]></content:encoded>
+			<wfw:commentRss>http://oldie.ronix.net.ua/2012/12/kak-vklyuchit-avtodopolnenie-komand-v-git.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Заметки для чайников</title>
+		<link>http://oldie.ronix.net.ua/2011/11/zametki-dlya-chajnikov.html</link>
+		<comments>http://oldie.ronix.net.ua/2011/11/zametki-dlya-chajnikov.html#comments</comments>
+		<pubDate>Mon, 21 Nov 2011 15:47:54 +0000</pubDate>
+		<dc:creator><![CDATA[ronix]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">http://blog.ronix.net.ua/?p=401</guid>
+		<description><![CDATA[Хочу попросить прощение у искушенных подписчиков за посты в блоге об «элементарных» вещах. Дело в том, что имея богатый опыт администрирования Linux на серверах, у меня есть определенные пробелы в использовании его в качестве desktop-а. И вот, после перерыва в несколько лет, я снова влился в стройные ряды поклонников, установив Ubuntu 11.10 на ноутбук. И, &#8230; <a href="http://oldie.ronix.net.ua/2011/11/zametki-dlya-chajnikov.html" class="more-link">Continue reading <span class="screen-reader-text">Заметки для чайников</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Хочу попросить прощение у искушенных подписчиков за посты в блоге об «элементарных»  вещах. Дело в том, что имея богатый опыт  администрирования Linux на серверах, у меня есть определенные пробелы в использовании его в качестве desktop-а. И вот, после перерыва в несколько лет, я снова влился в стройные ряды поклонников, установив Ubuntu 11.10 на ноутбук.</p>
+<p>И, естественно, что иногда у меня возникают разные мелкие проблемки, которые, вообщем-то, совсем не проблемки для linux-оидов с опытом. Но, раз они возникают у меня, значит они возникают и у других новичков. Поэтому и решил публиковать решение подобных вещей.</p>
+<p>Думаю, что если такой пост поможет хоть одному человеку, значит он написан не зря.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://oldie.ronix.net.ua/2011/11/zametki-dlya-chajnikov.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Как сменить экран входа в систему (Ubuntu)</title>
+		<link>http://oldie.ronix.net.ua/2011/11/kak-smenit-ekran-vxoda-v-sistemu-ubuntu.html</link>
+		<comments>http://oldie.ronix.net.ua/2011/11/kak-smenit-ekran-vxoda-v-sistemu-ubuntu.html#comments</comments>
+		<pubDate>Mon, 21 Nov 2011 15:37:58 +0000</pubDate>
+		<dc:creator><![CDATA[ronix]]></dc:creator>
+				<category><![CDATA[Прочее]]></category>
+
+		<guid isPermaLink="false">http://blog.ronix.net.ua/?p=396</guid>
+		<description><![CDATA[Сегодня решил опробовать KDE в качестве desktop менеджера в Ubuntu 11.10. Соответственно пишу про самую первую возникшую элементарную проблему, после установки KDE из репозитария. Сама проблема заключалась в том, что я провтыкал настройки экрана входа в систему (login manager) при установке, согласившись с предложением по умолчанию. Для полноты ощущения, захотелось, чтобы вход в систему осуществлялся &#8230; <a href="http://oldie.ronix.net.ua/2011/11/kak-smenit-ekran-vxoda-v-sistemu-ubuntu.html" class="more-link">Continue reading <span class="screen-reader-text">Как сменить экран входа в систему (Ubuntu)</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Сегодня решил опробовать KDE в качестве desktop менеджера в Ubuntu 11.10. Соответственно пишу про самую первую возникшую элементарную проблему, после установки KDE из репозитария.</p>
+<p><a href="http://oldie.ronix.net.ua/wp-content/uploads/2011/11/kdm_enable.png"><img class="alignleft size-thumbnail wp-image-397" title="kdm_enable" src="http://oldie.ronix.net.ua/wp-content/uploads/2011/11/kdm_enable-150x150.png" alt="Выбор KDM в качестве менеджера по умолчанию" width="150" height="150" /></a>Сама проблема заключалась в том, что я провтыкал настройки экрана входа в систему (login manager) при установке, согласившись с предложением по умолчанию. Для полноты ощущения, захотелось, чтобы вход в систему осуществлялся через родной kdm (KDE Desktop Manager).</p>
+<p>Нет ничего проще. Запускаем реконфигурацию kdm:</p>
+<pre>user@host:~ &gt;&gt; sudo dpkg-reconfigure kdm</pre>
+<p>И выбираем его в качестве менеджера по умолчанию. Вот, собственно говоря и все. Осталось сделать контрольный logout для проверки работоспособности настроек.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://oldie.ronix.net.ua/2011/11/kak-smenit-ekran-vxoda-v-sistemu-ubuntu.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Unity: как добавить иконку Skype в системный трей</title>
+		<link>http://oldie.ronix.net.ua/2011/11/unity-kak-dobavit-ikonku-skype-v-sistemnyj-trej.html</link>
+		<comments>http://oldie.ronix.net.ua/2011/11/unity-kak-dobavit-ikonku-skype-v-sistemnyj-trej.html#comments</comments>
+		<pubDate>Wed, 09 Nov 2011 05:29:15 +0000</pubDate>
+		<dc:creator><![CDATA[ronix]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">http://blog.ronix.net.ua/?p=387</guid>
+		<description><![CDATA[С появлением Unity, которая устанавливается в Ubuntu по умолчанию, возникло множество сюрпризов, как мелких, так и крупных.Одним из них является то, что далеко не каждая программа может повесить свою иконку в системный трей. Но, все решаемо. Для управления поведением Unity нам понадобиться dconf-tools, которые по умолчанию не установлены: host$ sudo apt-get install dconf-tools Дальше запускаем &#8230; <a href="http://oldie.ronix.net.ua/2011/11/unity-kak-dobavit-ikonku-skype-v-sistemnyj-trej.html" class="more-link">Continue reading <span class="screen-reader-text">Unity: как добавить иконку Skype в системный трей</span></a>]]></description>
+				<content:encoded><![CDATA[<p><a href="http://oldie.ronix.net.ua/wp-content/uploads/2011/11/systray.png"><img class="alignleft size-medium wp-image-388" title="dconf-editor" src="http://oldie.ronix.net.ua/wp-content/uploads/2011/11/systray-300x235.png" alt="dconf Editor screenshot" width="300" height="235" /></a></p>
+<p>С появлением Unity, которая устанавливается в Ubuntu по умолчанию, возникло множество сюрпризов, как мелких, так и крупных.Одним из них является то, что далеко не каждая программа может повесить свою иконку в системный трей. Но, все решаемо.</p>
+<p>Для управления поведением Unity нам понадобиться <a href="http://packages.ubuntu.com/dconf-tools" target="_blank">dconf-tools</a>, которые по умолчанию не установлены:</p>
+<pre>host$ sudo apt-get install dconf-tools</pre>
+<p>Дальше запускаем <strong>dconf-edtior</strong> и идем в раздел desktop → unity → panel и меняем параметр «systray-whitelist», добавив в список скайп.</p>
+<p>Для этого меняем:</p>
+<pre>['JavaEmbeddedFrame', 'Mumble', 'Wine', 'hp-systray', 'scp-dbus-service']</pre>
+<p>на</p>
+<pre>['JavaEmbeddedFrame', 'Mumble', 'Wine', 'hp-systray', 'scp-dbus-service', 'Skype']</pre>
+<p>В принципе, можно поступить ещё более прагматично, изменив список параметров на <em>['all']</em>, чтобы в последствии избежать необходимости править его ещё раз.</p>
+<p>Теперь нужно перезагрузиться, либо перезапустить unity. В последнем случае нажимаем комбинацию клавиш Alt-F2 и запускаем команду:</p>
+<pre>
+unity --replace
+</pre>
+]]></content:encoded>
+			<wfw:commentRss>http://oldie.ronix.net.ua/2011/11/unity-kak-dobavit-ikonku-skype-v-sistemnyj-trej.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Как правильно обновить IOS в формате tar на коммутаторах  Cisco Catalyst</title>
+		<link>http://oldie.ronix.net.ua/2011/03/kak-pravilno-obnovit-ios-v-formate-tar-na-kommutatorax-cisco-catalyst.html</link>
+		<comments>http://oldie.ronix.net.ua/2011/03/kak-pravilno-obnovit-ios-v-formate-tar-na-kommutatorax-cisco-catalyst.html#comments</comments>
+		<pubDate>Sat, 05 Mar 2011 09:26:05 +0000</pubDate>
+		<dc:creator><![CDATA[ronix]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">http://blog.ronix.net.ua/?p=376</guid>
+		<description><![CDATA[Статья была написана очень давно, все никак руки не доходили довести до ума и выложить сюда. Сегодня всё-таки нашел время на неё. Итак, у вас есть файл с расширением tar, содержащий свежий IOS, который вы хотите использовать в своих коммутаторах. Процедура обновления не представляет никакой сложности, но хочется сразу предупредить о том, что восстановление коммутатора &#8230; <a href="http://oldie.ronix.net.ua/2011/03/kak-pravilno-obnovit-ios-v-formate-tar-na-kommutatorax-cisco-catalyst.html" class="more-link">Continue reading <span class="screen-reader-text">Как правильно обновить IOS в формате tar на коммутаторах  Cisco Catalyst</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Статья была написана очень давно, все никак руки не доходили довести до ума и выложить сюда. Сегодня всё-таки нашел время на неё.</p>
+<p>Итак, у вас есть файл с расширением tar, содержащий свежий IOS, который вы хотите использовать в своих коммутаторах. Процедура обновления не представляет никакой сложности, но хочется сразу предупредить о том, что восстановление коммутатора без рабочего IOS, при отсутствии надлежащего опыта, представляет собой более сложный и запутанный процесс, чем само обновление. Поэтому, нижеследующие действия производите на свой страх и риск.</p>
+<p>Чтобы передать файл с IOS на коммутатор, вам понадобиться рабочий tftp-сервер, однако его настройка выходит за рамки данной статьи. Разместите tar-файл в рабочем каталоге сервера, после чего убедитесь, что файл имеет верную контрольную md5 сумму. Многие системные администраторы игнорируют сверку контрольных сумм по совершенно непонятным причинам. Эта процедура отнимает совсем немного времени, зато позволяет избежать больших проблем в будущем. И это время совершенно не сравнимо со временем восстановления коммутатора после заливки туда битого IOS-а.</p>
+<p>Зайдите на коммутатор и выполните команду dir flash:, чтобы убедиться, что у вас имеется достаточно места на флеш-карте.</p>
+<pre>
+cisco #dir flash:
+Directory of flash:/
+    2  -rwx        9392   Dec 8 2010 21:22:46 +02:00  private-config.text
+  547  -rwx        3096   Mar 1 1993 02:00:39 +02:00  multiple-fs
+    4  -rwx        9148   Dec 8 2010 21:22:46 +02:00  config.text
+    5  drwx         512   Mar 1 1993 02:09:03 +02:00  c2960-lanlitek9-mz.122-44.SE6
+27998208 bytes total (18006528 bytes free)
+</pre>
+<p>Возможно, вам понадобиться удалить старый IOS, чтобы освободить место для нового. Сделать это можно так:</p>
+<pre>
+cisco#delete /force /recursive flash:c2960-lanlitek9-mz.122-44.SE6 
+</pre>
+<p>Далее произведите загрузку и распаковку нового IOS-са на коммутатор:</p>
+<pre>
+cisco #archive tar /xtract tftp://c2960-lanlitek9-tar.122-52.SE.tar flash:
+Loading c2960-lanlitek9-tar.122-52.SE.tar from 10.10.10.10 (via Vlan1): !
+c2960-lanlitek9-mz.122-52.SE/ (directory)
+c2960-lanlitek9-mz.122-52.SE/html/ (directory)
+extracting c2960-lanlitek9-mz.122-52.SE/html/stylesheet.css (22059 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/ajax.js (28348 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/title.js (577 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/sorttable.js (48234 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/toolbar.js (6383 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/ip.js (3500 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/appsui.js (1749 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/helpframework.js (865 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/layers.js (1616 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/sitewide.js (12467 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/graph.js (39650 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/framework.js (24955 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/combo.js (9353 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/forms.js (13756 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/converter.js (4829 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/fpv.js (41015 bytes)!
+extracting c2960-lanlitek9-mz.122-52.SE/html/more.txt (62 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/graph_dash.js (18865 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/telnet.shtml (6642 bytes)
+extracting c2960-lanlitek9-mz.122-52.SE/html/bottombanner.htm (4108 bytes)
+…
+extracting c2960-lanlitek9-mz.122-52.SE/c2960-lanlitek9-mz.122-52.SE.bin (7731596 bytes)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+extracting c2960-lanlitek9-mz.122-52.SE/info (423 bytes)
+extracting info (106 bytes)
+[OK - 11448320 bytes]
+cisco#
+</pre>
+<p>Теперь необходимо произвести проверку загруженного образа, чтобы убедиться в его корректности:</p>
+<pre>
+cisco#verify /md5 flash:c2960-lanlitek9-mz.122-52.SE/c2960-lanlitek9-mz.122-52.SE.bin
+.............................Done!
+verify /md5 (flash:c2960-lanlitek9-mz.122-52.SE/c2960-lanlitek9-mz.122-52.SE.bin) = 4568ddfab7a957c62821e0011b3b4ed0
+cisco#
+</pre>
+<p>Остался последний шаг: перезагрузить коммутатор и убедиться что все работает:</p>
+<pre>
+cisco#reload
+Proceed with reload? [confirm]
+</pre>
+<p>Как вы видите, процедура обновления IOS довольно проста и незатейлива. Однако, хотелось бы ещё раз подчеркнуть, что она небезопасна, особенно, если вы удаляете старый IOS перед заливкой нового. Если вы работаете с удаленным коммутатором, то вы должны быть железно уверены, что канал связи будет работать стабильно на протяжении всей процедуры обновления. В противном случае вас ждет поездка и обучение восстановлению коммутаторов в полевых условиях.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://oldie.ronix.net.ua/2011/03/kak-pravilno-obnovit-ios-v-formate-tar-na-kommutatorax-cisco-catalyst.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Calibre: читаем книги в Linux</title>
+		<link>http://oldie.ronix.net.ua/2011/01/calibre-chitaem-knigi-v-linux.html</link>
+		<comments>http://oldie.ronix.net.ua/2011/01/calibre-chitaem-knigi-v-linux.html#comments</comments>
+		<pubDate>Wed, 05 Jan 2011 14:13:51 +0000</pubDate>
+		<dc:creator><![CDATA[ronix]]></dc:creator>
+				<category><![CDATA[*NIX-like OS]]></category>
+		<category><![CDATA[Десктоп]]></category>
+		<category><![CDATA[calibre]]></category>
+		<category><![CDATA[epub]]></category>
+		<category><![CDATA[fb2]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[читалка]]></category>
+
+		<guid isPermaLink="false">http://blog.ronix.net.ua/?p=350</guid>
+		<description><![CDATA[Пару лет назад я опубликовал пост Читалка fb2 для linux. Откровенно говоря, описанные там программы не впечатляют. Так, третий сорт —не брак. Я же, со временем, книжки на десктопе перестал читать вообще, пользуясь телефоном с WinMobile. А недавно приобрел для этих целей читалку с электронными чернилами. Но не об этом речь. Меня заинтересовал формат ePub, &#8230; <a href="http://oldie.ronix.net.ua/2011/01/calibre-chitaem-knigi-v-linux.html" class="more-link">Continue reading <span class="screen-reader-text">Calibre: читаем книги в Linux</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Пару лет назад я опубликовал пост <a href="http://oldie.ronix.net.ua/2008/09/fb2-linux.html" target="_self">Читалка fb2 для linux</a>. Откровенно говоря, описанные там программы не впечатляют. Так, третий сорт —не брак. Я же, со временем, книжки на десктопе перестал читать вообще, пользуясь телефоном с WinMobile. А недавно приобрел для этих целей читалку с электронными чернилами. Но не об этом речь. Меня заинтересовал формат ePub, и в процессе поиска удобноваримого конвертора fb2↔ePub, я нашел совершенно удивительную программку под названием <a href="http://calibre-ebook.com/" target="_blank">Calibre</a>. И она мне настолько понравилась, что я даже переборол свою лень и теперь пишу эту заметку.</p>
+<p>Разработчики Calibre позиционируют свое творение как «One stop solution to all your e-book needs». И я с ними совершенно согласен. Это не просто читалка. Это менеджер электронных книг, имеющий встроенный конвертор и умеющий работать напрямую со многими типами eBook Reader. Программа кростплатформенна, поскольку написана на python, имеет инсталляторы под MacOS, Windows и Linux.<span id="more-439"></span></p>
+<p><a href="http://picasaweb.google.com/lh/photo/i95ixhAiwWSAy79-TlWKim3SD2Gx7Z0Wo2TQwHh2mf4?feat=embedwebsite"><img src="http://lh4.ggpht.com/_nPz_6SGR8VM/TSRzU67ghWI/AAAAAAAACpY/UQ8RriQXKCU/s400/5.png" alt="" width="400" height="243" /></a></p>
+<p>Впрочем, установка её под Linux происходит несколько необычно. Вместо привычного пакета в формате .deb или .rpm, разработчики предлагают сгрузить бинарный инсталлятор вот таким вот образом:</p>
+<pre>sudo python -c "import urllib2; exec urllib2.urlopen('http://status.calibre-ebook.com/linux_installer').read(); main()"
+</pre>
+<p>В моей Ubuntu 10.10 данный процесс прошел весьма гладко, не вызвав никаких нареканий. Даже, что особенно приятно, появилась иконка в главном меню Gnome. Впрочем, любители исходников тоже не обижены, для них доступен на скачивание тарболл. Я пробовал пойти и этим путем, но терпения не хватило — нужно было доустановить в систему кучу dev-библиотек, и после очередной ругни на ненайденную либу, у меня просто пропало желание заниматься этой ерундой дальше :).</p>
+<p>При первом запуске нам предлагается определиться с местом для хранения библиотеки и с моделью нашего электронного друга - eBook Reader-а.</p>
+<p><a href="http://picasaweb.google.com/lh/photo/oAvYlovF2Lu5RztiI2_H-W3SD2Gx7Z0Wo2TQwHh2mf4?feat=embedwebsite"><img src="http://lh3.ggpht.com/_nPz_6SGR8VM/TSR4eK6W8CI/AAAAAAAACpc/v9HfH3EfFSg/s400/1.png" alt="" width="400" height="294" /></a></p>
+<p>Дальше остается лишь закинуть книжки и читать, читать, читать… Работать со встроенным просмотрщиком довольно удобно. Все, что могло бы понадобиться мне в процессе чтения, здесь присутствует.</p>
+<p><a href="http://picasaweb.google.com/lh/photo/BfzG6yNr6PaMd-jgfVRw6W3SD2Gx7Z0Wo2TQwHh2mf4?feat=embedwebsite"><img src="http://lh4.ggpht.com/_nPz_6SGR8VM/TSR5npBxfsI/AAAAAAAACpg/jfez2PEGGs4/s400/4.png" alt="" width="400" height="311" /></a></p>
+<p>Работа конвертора нареканий тоже не вызвала. Единственное, что не попробовал — отправку книжек на eReader, мой девайс просто не поддерживается.</p>
+<p>Вообщем-то, всё, что хотел написать, написал. Хочеться сделать лишь вывод. Calibre — это добротно сделанный, user-friendly продукт, ничем не уступающий коммерческому программному обеспечению. Готовый к употреблению и не требующий обработки рашпилем. Побольше бы такого софта в Linux!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://oldie.ronix.net.ua/2011/01/calibre-chitaem-knigi-v-linux.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Gentoo: проблема с resolv.conf в новой системе</title>
+		<link>http://oldie.ronix.net.ua/2011/01/gentoo-problema-s-resolv-conf-v-novoj-sisteme.html</link>
+		<comments>http://oldie.ronix.net.ua/2011/01/gentoo-problema-s-resolv-conf-v-novoj-sisteme.html#comments</comments>
+		<pubDate>Sat, 01 Jan 2011 05:46:09 +0000</pubDate>
+		<dc:creator><![CDATA[ronix]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">http://blog.ronix.net.ua/?p=417</guid>
+		<description><![CDATA[Заметка относится к категории «Для чайников» В хэндбуке Gentoo есть маленькая недописка по поводу конфигурирования сети в новой системе. Если делать все по написанному, то после первой перезагрузки машина теряет dns, так как resolv.conf очищается. Впрочем, если не пофиксить такое поведение, то конфигурация резолвера будет очищаться при каждой перезагрузке. Лечиться очень просто. В /etc/conf.d/net нужно &#8230; <a href="http://oldie.ronix.net.ua/2011/01/gentoo-problema-s-resolv-conf-v-novoj-sisteme.html" class="more-link">Continue reading <span class="screen-reader-text">Gentoo: проблема с resolv.conf в новой системе</span></a>]]></description>
+				<content:encoded><![CDATA[<p><em>Заметка относится к категории «Для чайников»</em></p>
+<p>В хэндбуке Gentoo есть маленькая недописка по поводу конфигурирования сети в новой системе. Если делать все по написанному, то после первой перезагрузки машина теряет dns, так как resolv.conf очищается. Впрочем, если не пофиксить такое поведение, то конфигурация резолвера будет очищаться при <strong>каждой</strong> перезагрузке.</p>
+<p>Лечиться очень просто. В <strong>/etc/conf.d/net</strong> нужно добавить адреса нужных DNS-серверов:</p>
+<pre>
+dns_servers_eth0="8.8.8.8 8.8.4.4"
+</pre>
+<p>P.S. Поскольку заметка для чайников, то для тех кто не в теме, скажу, что в вышеуказанной конфигурации используются сервера Google Public DNS.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://oldie.ronix.net.ua/2011/01/gentoo-problema-s-resolv-conf-v-novoj-sisteme.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Онлайн-утилита для find</title>
+		<link>http://oldie.ronix.net.ua/2010/09/onlajn-utilita-dlya-find.html</link>
+		<comments>http://oldie.ronix.net.ua/2010/09/onlajn-utilita-dlya-find.html#comments</comments>
+		<pubDate>Fri, 24 Sep 2010 14:12:33 +0000</pubDate>
+		<dc:creator><![CDATA[ronix]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">http://blog.ronix.net.ua/?p=343</guid>
+		<description><![CDATA[Нарыл довольно полезную онлайн-утилиту и спешу поделиться ссылкой. Это постоитель параметров find &#8212; http://find.unixpin.com/ru/. Учитывая количество этих самых параметров, думаю, данный ресурс будет полезен для многих сисадминов.]]></description>
+				<content:encoded><![CDATA[<p>Нарыл довольно полезную онлайн-утилиту и спешу поделиться ссылкой. Это постоитель параметров <strong>find </strong>&mdash; <a href="http://find.unixpin.com/ru/">http://find.unixpin.com/ru/</a>. </p>
+<p>Учитывая количество этих самых параметров, думаю, данный ресурс будет полезен для многих сисадминов.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://oldie.ronix.net.ua/2010/09/onlajn-utilita-dlya-find.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>mysqldump: скрываем параметры</title>
+		<link>http://oldie.ronix.net.ua/2010/08/mysqldump-skryvaem-parametry.html</link>
+		<comments>http://oldie.ronix.net.ua/2010/08/mysqldump-skryvaem-parametry.html#comments</comments>
+		<pubDate>Mon, 30 Aug 2010 14:21:51 +0000</pubDate>
+		<dc:creator><![CDATA[ronix]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">http://blog.ronix.net.ua/?p=327</guid>
+		<description><![CDATA[До сегодняшнего дня резервные копии баз MySQL я делал при помощи примитивного скрипта, в котором настройки подключения к серверу были жестко забиты в качестве параметров mysqldump. К сожалению, это не самый безопасный путь резервирования, так как любой другой пользователь, просмотрев список процессов, легко сможет увидеть рутовый пароль. Чем это чревато, думаю, объяснять не нужно. Сегодня &#8230; <a href="http://oldie.ronix.net.ua/2010/08/mysqldump-skryvaem-parametry.html" class="more-link">Continue reading <span class="screen-reader-text">mysqldump: скрываем параметры</span></a>]]></description>
+				<content:encoded><![CDATA[<p>До сегодняшнего дня резервные копии баз MySQL я делал при помощи примитивного скрипта, в котором настройки подключения к серверу были жестко забиты в качестве параметров mysqldump.</p>
+<p>К сожалению, это не самый безопасный путь резервирования, так как любой другой пользователь, просмотрев список процессов, легко сможет увидеть рутовый пароль. Чем это чревато, думаю, объяснять не нужно.</p>
+<p>Сегодня на одном из форумов наткнулся на более безопасный вариант — использование опции <em>--defaults-extra-file</em>, которая позволяет вынести параметры, в том числе и пароль, во внешний файлик. Таким образом можно легко обезопаситься от подглядывания.</p>
+<p>Формат файла следующий:</p>
+<pre><strong>host:~ # cat client.cnf</strong>
+[client]
+host     = localhost
+user     = root
+password = xxxxxxxxxxx
+socket   = /path/to/mysqld/mysqld.sock
+</pre>
+<p>Единственный ньюанс при использовании опции <em>--default-extra-file</em>&nbsp;&mdash; она должна использоватся в качестве первого аргумента команды:</p>
+<blockquote><p>
+To work properly, each of these options must immediately follow the command name, with the exception that --print-defaults may be used immediately after --defaults-file or --defaults-extra-file. Also, when specifying file names, you should avoid the use of the “~” shell metacharacter because it might not be interpreted as you expect.
+</p></blockquote>
+<p>В противном случае возникает малоинформативная ошибка, попытка решить которую, собственно, и сподвигла написать меня этот пост:</p>
+<pre>
+host:~ # mysqldump  -uroot --defaults-extra-file=client.cnf mydatabase
+mysqldump: unknown variable 'defaults-extra-file=client.cnf'
+</pre>
+]]></content:encoded>
+			<wfw:commentRss>http://oldie.ronix.net.ua/2010/08/mysqldump-skryvaem-parametry.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Как мониторить изменения конфигурации Cisco средствами IOS</title>
+		<link>http://oldie.ronix.net.ua/2010/06/cisco-ios-archive.html</link>
+		<comments>http://oldie.ronix.net.ua/2010/06/cisco-ios-archive.html#comments</comments>
+		<pubDate>Wed, 16 Jun 2010 05:47:45 +0000</pubDate>
+		<dc:creator><![CDATA[ronix]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">http://blog.ronix.net.ua/?p=318</guid>
+		<description><![CDATA[В предыдущем посте я писал о том, как при помощи команды archive настроить автоматическое сохранение конфигурации при её записи в NVRAM. Я также писал о том, что данная команда, помимо основного своего назначения, имеет ещё одну возможность, которая должна понравиться особо параноидальным админам. При помощи archive можно журналировать все выполняемые на устройстве команды конфигурирования. Как &#8230; <a href="http://oldie.ronix.net.ua/2010/06/cisco-ios-archive.html" class="more-link">Continue reading <span class="screen-reader-text">Как мониторить изменения конфигурации Cisco средствами IOS</span></a>]]></description>
+				<content:encoded><![CDATA[<p>В <a href="http://oldie.ronix.net.ua/2010/06/archive-cisco-ios.html">предыдущем посте</a> я писал о том, как при помощи команды <strong>archive</strong> настроить автоматическое сохранение конфигурации при её записи в NVRAM.</p>
+<p>Я также писал о том, что данная команда, помимо основного своего назначения, имеет ещё одну возможность, которая должна понравиться особо параноидальным админам. При помощи <strong>archive</strong> можно журналировать все выполняемые на устройстве команды конфигурирования. </p>
+<p>Как и в предыдущем случае, ничего сложного во включении этой возможности нет. </p>
+<p><span id="more-318"></span>
+<pre>
+! заходим в режим конфигурации archive
+rout-c2811(config)#archive
+! заходим в режим мониторинга изменений конфигурации
+rout-c2811(config-archive)#log config
+! включаем журналирование
+rout-c2811(config-archive-log-cfg)#logging enable
+! запрещаем сохранять пароли
+rout-c2811(config-archive-log-cfg)#hidekeys
+! увеличиваем количество сохраняемых последних введенных команд
+! (по умолчанию 100)
+rout-c2811(config-archive-log-cfg)#logging size 300
+</pre>
+<p>Просмотреть журнал выполненных команд можно при помощи опций команды <strong>show archive</strong>:</p>
+<pre>
+rout-c2811#show archive log config all
+ idx   sess           user@line      Logged command
+    1     1       cisco@vty0     |  logging enable
+    2     1       cisco@vty0     |  logging size 100
+    3     1       cisco@vty0     |  hidekeys
+    4     2       cisco@vty0     |interface Loopback0
+    5     2       cisco@vty0     | description Loopback for OSPF
+    6     3       cisco@vty0     |interface FastEthernet0/0
+    7     3       cisco@vty0     | description Standby channel to Head Office
+</pre>
+<p>Если у вас работает несколько сетевых администраторов, да ещё и разного уровня квалификации, то я бы рекомендовал использовать вышеуказанную способность вести журнал команд. Иногда это может оказаться очень полезным, особенно, при разборе полетов.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://oldie.ronix.net.ua/2010/06/cisco-ios-archive.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>
+<!-- Wp Fastest Cache: XML Content -->

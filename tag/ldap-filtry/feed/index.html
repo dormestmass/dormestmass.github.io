@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Dormestmass Blog &#187; ldap фильтры</title>
+	<atom:link href="http://oldie.ronix.net.ua/tag/ldap-filtry/feed" rel="self" type="application/rss+xml" />
+	<link>http://oldie.ronix.net.ua</link>
+	<description>Админ — это состояние души</description>
+	<lastBuildDate>Thu, 14 May 2015 09:03:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=4.3</generator>
+	<item>
+		<title>Фильтры для поиска в LDAP</title>
+		<link>http://oldie.ronix.net.ua/2007/04/ldap.html</link>
+		<comments>http://oldie.ronix.net.ua/2007/04/ldap.html#comments</comments>
+		<pubDate>Wed, 18 Apr 2007 05:18:47 +0000</pubDate>
+		<dc:creator><![CDATA[ronix]]></dc:creator>
+				<category><![CDATA[Сети]]></category>
+		<category><![CDATA[ldap]]></category>
+		<category><![CDATA[ldap фильтры]]></category>
+
+		<guid isPermaLink="false">http://blog.ronix.net.ua/?p=24</guid>
+		<description><![CDATA[Полное описание конструирования фильтров для поиска в дереве каталогов LDAPv3 можно найти в RFC 2254. Фильтр имеет формат префиксной нотации (или польской ?). Очень широко практикуется рекурсия. Итак. Тело фильтра должно быть заключено в скобки: "(" элемент_сравнения ")" Элементы сравнения конструируются так: И - "&#38;" список_фильтров ИЛИ - "&#124;" список_фильтров НЕТ - "!" элемент Элемент &#8230; <a href="http://oldie.ronix.net.ua/2007/04/ldap.html" class="more-link">Continue reading <span class="screen-reader-text">Фильтры для поиска в LDAP</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Полное описание конструирования фильтров для поиска в дереве каталогов LDAPv3 можно найти в <a rel="nofollow" href="http://tools.ietf.org/html/rfc2254">RFC 2254</a>.</p>
+<p>Фильтр имеет формат префиксной нотации (или польской ?). Очень широко практикуется рекурсия.<br />
+Итак. Тело фильтра должно быть заключено в скобки:</p>
+<p>"(" <span style="font-weight: bold;">элемент_сравнения</span> ")"</p>
+<p>Элементы сравнения конструируются так:</p>
+<ul>
+<li><span style="font-style: italic;">И</span> - "<span style="font-weight: bold;">&amp;</span>" список_фильтров</li>
+<li><span style="font-style: italic;">ИЛИ</span> - "<span style="font-weight: bold;">|</span>" список_фильтров</li>
+<li><span style="font-style: italic;">НЕТ</span> - "<span style="font-weight: bold;">!</span>" элемент</li>
+<li><span style="font-style: italic;">Элемент</span></li>
+</ul>
+<p>Список фильтров - это список из рекурсивно записанных фильтров.</p>
+<p><span id="more-359"></span>Элементы могут быть четырех типов: simple, present, substring и extensible.</p>
+<p>Элемент <em>simple</em> конструируется следующим образом:<br />
+<span style="font-weight: bold;"><br />
+<span style="font-style: italic;">атрибут</span> операция <span style="font-style: italic;">значение</span><br />
+</span><br />
+В значениях можно использовать символ "*", который заменяет любое количество символов.<br />
+Операции, применяемые бывают следующими: равно ("="), приблизительно ("~="), больше ("&gt;=") и меньше ("&lt;=").</p>
+<p>Например. Выбрать записи, у которых атрибут <span style="font-weight: bold;">cn</span> равен Roman Shramko:</p>
+<pre>(cn=Roman Shramko)
+</pre>
+<p>Записи, для которых атрибут <span style="font-weight: bold;">cn</span> не равен Roman Shramko:</p>
+<pre>(!(cn=Roman Shramko)
+</pre>
+<p>Записи, тип которых <span style="font-weight: bold;">GroupOfUniqueNames</span>(группа) и в которые входит RShramko (атрибут <span style="font-weight: bold;">uniquemember</span>):</p>
+<pre>(&amp;(ObjectClass=GroupOfUniqueNames)(uniquemember=uid=RShramko,ou=Employee,ou=Org, o=com))
+</pre>
+<p>Элемент <em>present</em> конструируется так:<br />
+<span style="font-weight: bold;"><br />
+<span style="font-style: italic;">атрибут</span> "=*"<br />
+</span></p>
+<p>Этот элемент является подмножеством элементов simple. Данный элемент используется для отбора записей, у которых присутствует определённый атрибут. Это наиболее используемый тип элементов.</p>
+<p>Например. Отобрать группы (тип записи <span style="font-weight: bold;">GroupOfUniqueNames</span>) в которых имеются члены (атрибут <span style="font-weight: bold;">uniquemember</span>):</p>
+<pre>(uniquemember=*)
+</pre>
+<p>Элемент <em>substring</em> конструируется следующим образом:&gt;<br />
+<span style="font-weight: bold;"><br />
+<span style="font-style: italic;">атрибут</span> "="<br />
+<span style="font-style: italic;">начальное_значение</span> "*" <span style="font-style: italic;">конечное_значение</span><br />
+</span><br />
+Этот тип элементов так же является подмножеством элементов типа simple и служит для отбора по подстрокам.<br />
+Например, нам нужно отобрать пользователей, у которых имя (атрибут <span style="font-weight: bold;">cn</span>) начинается на <span style="font-weight: bold;">R</span> и заканчивается на <span style="font-weight: bold;">ko</span>:</p>
+<pre>(cn=R*ko)
+</pre>
+<p>Элемент <em>extensible</em> конструируется так:<br />
+<span style="font-weight: bold;"><br />
+<span style="font-style: italic;">атрибут</span> [:"dn"] [":" идентификатор_поиска ] ":="<br />
+<span style="font-style: italic;">значение</span><br />
+</span><br />
+либо так:<br />
+<span style="font-weight: bold;"><br />
+<span style="font-style: italic;">атрибут</span> [:"dn"] ":" идентификатор_поиска ":="<br />
+<span style="font-style: italic;">значение</span><br />
+</span></p>
+<p>Идентификатор поиска (Matching Rule Identifier) описан в <a rel="nofollow" href="http://tools.ietf.org/html/rfc2251#section-4.1.9">RFC 2251</a>.</p>
+<blockquote><p>A matching rule is a means of expressing how a server should compare an AssertionValue received in a search filter with an abstract data value.</p></blockquote>
+<p>Честно говоря, я не нашёл в своей практической работе задач, для которых была бы необходима форма элементов <em>extensible</em>.</p>
+<p>Пример:</p>
+<pre>(cn:1.2.3.4.5:=Fred Flintstone)
+(sn:dn:2.4.6.8.10:=Barney Rubble)
+(o:dn:=Ace Industry)
+(:dn:2.4.6.8.10:=Dino)
+</pre>
+<p>Фильтр:</p>
+<pre>(&amp;(objectClass=group)(|(ou:dn:=Chicago)(ou:dn:=Miami)))
+</pre>
+<p>найдет группы, у которых в DN компонент OU содержит либо Chicago, либо Miami.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://oldie.ronix.net.ua/2007/04/ldap.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>
+<!-- Wp Fastest Cache: XML Content -->

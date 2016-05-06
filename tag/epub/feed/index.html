@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Dormestmass Blog &#187; epub</title>
+	<atom:link href="http://oldie.ronix.net.ua/tag/epub/feed" rel="self" type="application/rss+xml" />
+	<link>http://oldie.ronix.net.ua</link>
+	<description>Админ — это состояние души</description>
+	<lastBuildDate>Thu, 14 May 2015 09:03:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=4.3</generator>
+	<item>
+		<title>Calibre: читаем книги в Linux</title>
+		<link>http://oldie.ronix.net.ua/2011/01/calibre-chitaem-knigi-v-linux.html</link>
+		<comments>http://oldie.ronix.net.ua/2011/01/calibre-chitaem-knigi-v-linux.html#comments</comments>
+		<pubDate>Wed, 05 Jan 2011 14:13:51 +0000</pubDate>
+		<dc:creator><![CDATA[ronix]]></dc:creator>
+				<category><![CDATA[*NIX-like OS]]></category>
+		<category><![CDATA[Десктоп]]></category>
+		<category><![CDATA[calibre]]></category>
+		<category><![CDATA[epub]]></category>
+		<category><![CDATA[fb2]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[читалка]]></category>
+
+		<guid isPermaLink="false">http://blog.ronix.net.ua/?p=350</guid>
+		<description><![CDATA[Пару лет назад я опубликовал пост Читалка fb2 для linux. Откровенно говоря, описанные там программы не впечатляют. Так, третий сорт —не брак. Я же, со временем, книжки на десктопе перестал читать вообще, пользуясь телефоном с WinMobile. А недавно приобрел для этих целей читалку с электронными чернилами. Но не об этом речь. Меня заинтересовал формат ePub, &#8230; <a href="http://oldie.ronix.net.ua/2011/01/calibre-chitaem-knigi-v-linux.html" class="more-link">Continue reading <span class="screen-reader-text">Calibre: читаем книги в Linux</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Пару лет назад я опубликовал пост <a href="http://oldie.ronix.net.ua/2008/09/fb2-linux.html" target="_self">Читалка fb2 для linux</a>. Откровенно говоря, описанные там программы не впечатляют. Так, третий сорт —не брак. Я же, со временем, книжки на десктопе перестал читать вообще, пользуясь телефоном с WinMobile. А недавно приобрел для этих целей читалку с электронными чернилами. Но не об этом речь. Меня заинтересовал формат ePub, и в процессе поиска удобноваримого конвертора fb2↔ePub, я нашел совершенно удивительную программку под названием <a href="http://calibre-ebook.com/" target="_blank">Calibre</a>. И она мне настолько понравилась, что я даже переборол свою лень и теперь пишу эту заметку.</p>
+<p>Разработчики Calibre позиционируют свое творение как «One stop solution to all your e-book needs». И я с ними совершенно согласен. Это не просто читалка. Это менеджер электронных книг, имеющий встроенный конвертор и умеющий работать напрямую со многими типами eBook Reader. Программа кростплатформенна, поскольку написана на python, имеет инсталляторы под MacOS, Windows и Linux.<span id="more-439"></span></p>
+<p><a href="http://picasaweb.google.com/lh/photo/i95ixhAiwWSAy79-TlWKim3SD2Gx7Z0Wo2TQwHh2mf4?feat=embedwebsite"><img src="http://lh4.ggpht.com/_nPz_6SGR8VM/TSRzU67ghWI/AAAAAAAACpY/UQ8RriQXKCU/s400/5.png" alt="" width="400" height="243" /></a></p>
+<p>Впрочем, установка её под Linux происходит несколько необычно. Вместо привычного пакета в формате .deb или .rpm, разработчики предлагают сгрузить бинарный инсталлятор вот таким вот образом:</p>
+<pre>sudo python -c "import urllib2; exec urllib2.urlopen('http://status.calibre-ebook.com/linux_installer').read(); main()"
+</pre>
+<p>В моей Ubuntu 10.10 данный процесс прошел весьма гладко, не вызвав никаких нареканий. Даже, что особенно приятно, появилась иконка в главном меню Gnome. Впрочем, любители исходников тоже не обижены, для них доступен на скачивание тарболл. Я пробовал пойти и этим путем, но терпения не хватило — нужно было доустановить в систему кучу dev-библиотек, и после очередной ругни на ненайденную либу, у меня просто пропало желание заниматься этой ерундой дальше :).</p>
+<p>При первом запуске нам предлагается определиться с местом для хранения библиотеки и с моделью нашего электронного друга - eBook Reader-а.</p>
+<p><a href="http://picasaweb.google.com/lh/photo/oAvYlovF2Lu5RztiI2_H-W3SD2Gx7Z0Wo2TQwHh2mf4?feat=embedwebsite"><img src="http://lh3.ggpht.com/_nPz_6SGR8VM/TSR4eK6W8CI/AAAAAAAACpc/v9HfH3EfFSg/s400/1.png" alt="" width="400" height="294" /></a></p>
+<p>Дальше остается лишь закинуть книжки и читать, читать, читать… Работать со встроенным просмотрщиком довольно удобно. Все, что могло бы понадобиться мне в процессе чтения, здесь присутствует.</p>
+<p><a href="http://picasaweb.google.com/lh/photo/BfzG6yNr6PaMd-jgfVRw6W3SD2Gx7Z0Wo2TQwHh2mf4?feat=embedwebsite"><img src="http://lh4.ggpht.com/_nPz_6SGR8VM/TSR5npBxfsI/AAAAAAAACpg/jfez2PEGGs4/s400/4.png" alt="" width="400" height="311" /></a></p>
+<p>Работа конвертора нареканий тоже не вызвала. Единственное, что не попробовал — отправку книжек на eReader, мой девайс просто не поддерживается.</p>
+<p>Вообщем-то, всё, что хотел написать, написал. Хочеться сделать лишь вывод. Calibre — это добротно сделанный, user-friendly продукт, ничем не уступающий коммерческому программному обеспечению. Готовый к употреблению и не требующий обработки рашпилем. Побольше бы такого софта в Linux!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://oldie.ronix.net.ua/2011/01/calibre-chitaem-knigi-v-linux.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>
+<!-- Wp Fastest Cache: XML Content -->

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Dormestmass Blog &#187; outlook express</title>
+	<atom:link href="http://oldie.ronix.net.ua/tag/outlook-express/feed" rel="self" type="application/rss+xml" />
+	<link>http://oldie.ronix.net.ua</link>
+	<description>Админ — это состояние души</description>
+	<lastBuildDate>Thu, 14 May 2015 09:03:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=4.3</generator>
+	<item>
+		<title>Заметки по мультидоменной связке exim+courier-imapd+dspam+mysql</title>
+		<link>http://oldie.ronix.net.ua/2006/09/eximcourier-imapddspammysql.html</link>
+		<comments>http://oldie.ronix.net.ua/2006/09/eximcourier-imapddspammysql.html#comments</comments>
+		<pubDate>Tue, 19 Sep 2006 20:30:06 +0000</pubDate>
+		<dc:creator><![CDATA[ronix]]></dc:creator>
+				<category><![CDATA[Сети]]></category>
+		<category><![CDATA[courier imapd]]></category>
+		<category><![CDATA[dspam]]></category>
+		<category><![CDATA[exim]]></category>
+		<category><![CDATA[mail]]></category>
+		<category><![CDATA[mta]]></category>
+		<category><![CDATA[mua]]></category>
+		<category><![CDATA[mysql]]></category>
+		<category><![CDATA[outlook express]]></category>
+		<category><![CDATA[ssl]]></category>
+		<category><![CDATA[почта]]></category>
+
+		<guid isPermaLink="false">http://blog.ronix.net.ua/?p=14</guid>
+		<description><![CDATA[Настроил сабж на сервере. Всё ставил из портов. До сегодняшнего дня ни с одним из этих софтин не сталкивался, вот и описываю впечатления. Опции сборки exim: WITHOUT_IPV6=yes WITHOUT_NIS=yes WITH_MYSQL=yes WITH_CONTENT_SCAN=yes WITH_TCP_WRAPPERS=yes. Возникло несколько траблов. Во-первых, почтовые клиенты напрочь отказывались создавать дополнительные папки. Оутлук ругался, говоря "Invalid mailbox name". Mozilla вообще молчала как партизан. После поиска &#8230; <a href="http://oldie.ronix.net.ua/2006/09/eximcourier-imapddspammysql.html" class="more-link">Continue reading <span class="screen-reader-text">Заметки по мультидоменной связке exim+courier-imapd+dspam+mysql</span></a>]]></description>
+				<content:encoded><![CDATA[<p><a href="http://oldie.ronix.net.ua/wp-content/uploads/2006/09/imap.jpg"><img class="alignleft size-medium wp-image-15" title="конфигурирование INBOX" src="http://oldie.ronix.net.ua/wp-content/uploads/2006/09/imap-253x300.jpg" alt="" width="253" height="300" /></a>Настроил сабж на сервере. Всё ставил из портов. До сегодняшнего дня ни с одним из этих софтин не сталкивался, вот и описываю впечатления.</p>
+<p>Опции сборки exim:</p>
+<pre>WITHOUT_IPV6=yes WITHOUT_NIS=yes WITH_MYSQL=yes  WITH_CONTENT_SCAN=yes WITH_TCP_WRAPPERS=yes.</pre>
+<p>Возникло несколько траблов.</p>
+<p>Во-первых, почтовые клиенты напрочь отказывались создавать дополнительные папки. Оутлук ругался, говоря "Invalid mailbox name". Mozilla вообще молчала как партизан.</p>
+<p>После поиска на форумах нашёл решение. Как оказалось, для работы с courier-imapd требуется указания префикса в настройках почтового клиента, как показано на картинке.</p>
+<p>Следующая проблема возникла через пяток-десяток минут неактивности.</p>
+<p>Оутглюк отказался синхронизировать папки, говоря, что соединение с сервером было разорвано, код ошибки - 0x800CCC0F. Причина возникновения этой проблемы в следующем. Почтовый клиент открывает отдельную сессию с имап-сервером на каждую папку. А на сервере в настройках по умолчанию разрешено всего 4 соединения с одного адреса. Причём, как я понял, при попытке синхронизации, оутлук пытаеться открыть ещё отдельную сессию. Вообщем лимит коннектов исчерпываеться и имап-сервер отбивает клиента. Решение - увеличить количество одновременных сессий с одного адреса.</p>
+<p><span id="more-353"></span>Дальше начал настраивать ssl. Создал самоподписанный сертификат и подпихнул его курьеру. (Вообщето есть скрипты, которыми можно генерировать сертификаты, лежат они в /usr/local/etc/courier-imap. Называються mkimapdcert и mkpop3dcert, но я генерировал руками, по привычке :)). Вообщем отказался курьер работать с моими рукодельными сертификатами. Ругался страшно:</p>
+<pre>pop3d-ssl: couriertls: /etc/ssl/courier.pem: error:0906D06C:PEM routines:PEM_read_bio:no start line
+</pre>
+<p>Как оказалось, он хотел, чтобы и приватный ключ, и сертификат лежали в одном файле.<br />
+После того, как сделал:</p>
+<pre>cat server.pem &gt;&gt; server.crt
+</pre>
+<p>всё заработало хорошо.</p>
+<p>DSPAM тоже подсунул свинью. К получателю доходили пустые письма, в заголовке которых было указано "Unable to open file for reading: firstrun.txt: No such file or directory". Такой файлик, и ещё парочка подобных, валялись в /var/db/dspam.<br />
+Оказалось, надо создать ${DSPAMHOME}/txt/ и вкинуть их туда. Вроде в документации по установке этого не было.</p>
+<p>При тестировании отправки почты на внешние ящики выявил неприятность следующего характера. Поскольку на сервере крутиться несколько доменов, то при авторизации на SMTP сервере указываеться имя пользователя + домен. После приёма письма exim дополнительно к указанному имени+домену дописывает ещё раз домен. Результат налицо:</p>
+<pre>2006-09-19 14:39:06 1GPdwQ-000KUq-Bl &lt;= "test@domain.ua"@domain.ua H=(rawbeer)
+ [xxx.xxx.xxx.xxx] P=esmtpsa X=TLSv1:RC4-MD5:128 A=auth_login:test@domain.ua S=14
+22 id=007301c6dbe0$1dc14340$4200640a@rawbeer
+2006-09-19 14:39:09 1GPdwQ-000KUq-Bl ** remoteuser@mydomain.com R=dnslookup T=remote_smtp: SMTP error from remote mail server after MAIL FROM:&lt;"test@domain.ua"@domain.ua&gt;: host smtp.mydomain.com [194.44.50.1]: 550 Invalid recipient/sender mailing address
+</pre>
+<p>Вылечилось комментированием строчек с control = submission</p>
+<pre>  accept  hosts         = +relay_from_hosts
+#          control       = submission
+  accept  authenticated = *
+#          control       = submission
+
+<span style="font-weight: bold;">Ротация логов exim через newsyslog:</span>
+/var/log/exim/mainlog   mailnull:mail   640  7     *    $D0   JN
+/var/log/exim/rejectlog mailnull:mail   640  7     *    $D0   JN
+</pre>
+<p>Флаг N указывает на то, что перезапускать syslogd не нужно.</p>
+<p>Статистика работы exim генерируеться при помощи eximstats.<br />
+Вставил в crontab для автоматической генерации отчета перед ротацией логов:</p>
+<pre>/usr/local/sbin/eximstats -nr /var/log/exim/mainlog
+</pre>
+]]></content:encoded>
+			<wfw:commentRss>http://oldie.ronix.net.ua/2006/09/eximcourier-imapddspammysql.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>
+<!-- Wp Fastest Cache: XML Content -->
